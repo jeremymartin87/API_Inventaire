@@ -20,7 +20,7 @@ namespace API_Inventaire.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRooms()
         {
-            var rooms = await _context.Rooms.ToListAsync();
+            var rooms = await _context.rooms.ToListAsync();
             return Ok(rooms);
         }
 
@@ -28,7 +28,7 @@ namespace API_Inventaire.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRoom(int id)
         {
-            var room = await _context.Rooms.FindAsync(id);
+            var room = await _context.rooms.FindAsync(id);
 
             if (room == null)
             {
@@ -43,7 +43,7 @@ namespace API_Inventaire.Controllers
         public async Task<IActionResult> PutRoom(int id, rooms room)
         {
 
-            var room2 = await _context.Rooms.FindAsync(id);
+            var room2 = await _context.rooms.FindAsync(id);
 
             room2.name = room.name;
             room2.parcid = room.parcid;
@@ -78,7 +78,7 @@ namespace API_Inventaire.Controllers
         public async Task<ActionResult<rooms>> PostRoom(rooms room)
         {
             room.createdat = DateTime.UtcNow;
-            _context.Rooms.Add(room);
+            _context.rooms.Add(room);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRoom", new { id = room.id }, room);
@@ -88,13 +88,13 @@ namespace API_Inventaire.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
-            var room = await _context.Rooms.FindAsync(id);
+            var room = await _context.rooms.FindAsync(id);
             if (room == null)
             {
                 return NotFound();
             }
 
-            _context.Rooms.Remove(room);
+            _context.rooms.Remove(room);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,14 +102,14 @@ namespace API_Inventaire.Controllers
 
         private bool RoomExists(int id)
         {
-            return _context.Rooms.Any(e => e.id == id);
+            return _context.rooms.Any(e => e.id == id);
         }
 
         // GET: api/Rooms/byParc/5
         [HttpGet("byParc/{parcId}")]
         public async Task<IActionResult> GetRoomsByParc(int parcId)
         {
-            var rooms = await _context.Rooms.Where(r => r.parcid == parcId).ToListAsync();
+            var rooms = await _context.rooms.Where(r => r.parcid == parcId).ToListAsync();
 
             if (rooms == null || !rooms.Any())
             {

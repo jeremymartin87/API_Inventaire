@@ -20,7 +20,7 @@ namespace API_Inventaire.Controllers
         [HttpGet]
         public async Task<IActionResult> GetParcs()
         {
-            var parcs = await _context.Parcs.ToListAsync();
+            var parcs = await _context.parcs.ToListAsync();
             return Ok(parcs);
         }
 
@@ -28,7 +28,7 @@ namespace API_Inventaire.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetParc(int id)
         {
-            var parc = await _context.Parcs.FindAsync(id);
+            var parc = await _context.parcs.FindAsync(id);
 
             if (parc == null)
             {
@@ -43,7 +43,7 @@ namespace API_Inventaire.Controllers
         public async Task<IActionResult> PutParc(int id, parcs parc)
         {
 
-            var parc2 = await _context.Parcs.FindAsync(id);
+            var parc2 = await _context.parcs.FindAsync(id);
 
             parc2.name = parc.name;
             parc2.userid = parc.userid;
@@ -78,7 +78,7 @@ namespace API_Inventaire.Controllers
         [HttpPost]
         public async Task<ActionResult<parcs>> PostParc(parcs parc)
         {
-            _context.Parcs.Add(parc);
+            _context.parcs.Add(parc);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetParc", new { id = parc.id }, parc);
@@ -88,13 +88,13 @@ namespace API_Inventaire.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteParc(int id)
         {
-            var parc = await _context.Parcs.FindAsync(id);
+            var parc = await _context.parcs.FindAsync(id);
             if (parc == null)
             {
                 return NotFound();
             }
 
-            _context.Parcs.Remove(parc);
+            _context.parcs.Remove(parc);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -102,7 +102,7 @@ namespace API_Inventaire.Controllers
 
         private bool ParcExists(int id)
         {
-            return _context.Parcs.Any(e => e.id == id);
+            return _context.parcs.Any(e => e.id == id);
         }
     }
 }
