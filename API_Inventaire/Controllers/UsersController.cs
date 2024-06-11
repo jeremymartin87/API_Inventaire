@@ -20,34 +20,34 @@ namespace API_Inventaire.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
-            return Ok(users);
+            var _users = await _context.Users.ToListAsync();
+            return Ok(_users);
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUsers(int id)
         {
-            var users = await _context.Users.FindAsync(id);
+            var _users = await _context.Users.FindAsync(id);
 
-            if (users == null)
+            if (_users == null)
             {
                 return NotFound();
             }
 
-            return Ok(users);
+            return Ok(_users);
         }
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
+        public async Task<IActionResult> PutUsers(int id, users _users)
         {
-            if (id != users.Id)
+            if (id != _users.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            _context.Entry(_users).State = EntityState.Modified;
 
             try
             {
@@ -70,12 +70,12 @@ namespace API_Inventaire.Controllers
 
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<users>> PostUsers(users _users)
         {
-            _context.Users.Add(users);
+            _context.Users.Add(_users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.Id }, users);
+            return CreatedAtAction("GetUsers", new { id = _users.id }, _users);
         }
 
         // DELETE: api/Users/5
@@ -96,7 +96,7 @@ namespace API_Inventaire.Controllers
 
         private bool UsersExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.id == id);
         }
     }
 }

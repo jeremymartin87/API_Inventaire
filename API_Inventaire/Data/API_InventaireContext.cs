@@ -9,10 +9,10 @@ namespace API_Inventaire.Data
         {
         }
 
-        public DbSet<API_Inventaire.Models.Devices> Devices { get; set; } = default!;
-        public DbSet<API_Inventaire.Models.Parcs> Parcs { get; set; } = default!;
-        public DbSet<API_Inventaire.Models.Rooms> Rooms { get; set; } = default!;
-        public DbSet<API_Inventaire.Models.Users> Users { get; set; } = default!;
+        public DbSet<API_Inventaire.Models.devices> Devices { get; set; } = default!;
+        public DbSet<API_Inventaire.Models.parcs> Parcs { get; set; } = default!;
+        public DbSet<API_Inventaire.Models.rooms> Rooms { get; set; } = default!;
+        public DbSet<API_Inventaire.Models.users> Users { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
