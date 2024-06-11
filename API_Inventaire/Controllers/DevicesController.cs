@@ -20,7 +20,7 @@ namespace API_Inventaire.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDevices()
         {
-            var devices = await _context.Devices.ToListAsync();
+            var devices = await _context.devices.ToListAsync();
             return Ok(devices);
         }
 
@@ -28,7 +28,7 @@ namespace API_Inventaire.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDevice(int id)
         {
-            var device = await _context.Devices.FindAsync(id);
+            var device = await _context.devices.FindAsync(id);
 
             if (device == null)
             {
@@ -40,9 +40,9 @@ namespace API_Inventaire.Controllers
 
         // PUT: api/Devices/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDevice(int id, Devices device)
+        public async Task<IActionResult> PutDevice(int id, devices device)
         {
-            if (id != device.Id)
+            if (id != device.id)
             {
                 return BadRequest();
             }
@@ -70,25 +70,25 @@ namespace API_Inventaire.Controllers
 
         // POST: api/Devices
         [HttpPost]
-        public async Task<ActionResult<Devices>> PostDevice(Devices device)
+        public async Task<ActionResult<devices>> PostDevice(devices device)
         {
-            _context.Devices.Add(device);
+            _context.devices.Add(device);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDevice", new { id = device.Id }, device);
+            return CreatedAtAction("GetDevice", new { id = device.id }, device);
         }
 
         // DELETE: api/Devices/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDevice(int id)
         {
-            var device = await _context.Devices.FindAsync(id);
+            var device = await _context.devices.FindAsync(id);
             if (device == null)
             {
                 return NotFound();
             }
 
-            _context.Devices.Remove(device);
+            _context.devices.Remove(device);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -96,14 +96,14 @@ namespace API_Inventaire.Controllers
 
         private bool DeviceExists(int id)
         {
-            return _context.Devices.Any(e => e.Id == id);
+            return _context.devices.Any(e => e.id == id);
         }
 
         // GET: api/Devices/byRoom/5
         [HttpGet("byRoom/{roomId}")]
         public async Task<IActionResult> GetDevicesByParc(int roomId)
         {
-            var devices = await _context.Devices.Where(r => r.RoomId == roomId).ToListAsync();
+            var devices = await _context.devices.Where(r => r.roomid == roomId).ToListAsync();
 
             if (devices == null || !devices.Any())
             {
