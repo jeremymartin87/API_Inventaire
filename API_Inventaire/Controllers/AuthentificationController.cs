@@ -39,7 +39,7 @@ namespace API_Inventaire.Controllers
         private bool Authenticate(string username, string password)
         {
             bool resultTestLoginUser = false;
-            if(username =="admin" || password =="admin")
+            if(username =="admin" && password =="admin")
             {
                 resultTestLoginUser=true;
             }
@@ -54,7 +54,7 @@ namespace API_Inventaire.Controllers
 
             List<Claim> claims = new List<Claim>() { new Claim("username", user)};
 
-            JwtSecurityToken st = new JwtSecurityToken("3iL", "API Test", claims, DateTime.Now, DateTime.UtcNow.AddHours(1), credentials);
+            JwtSecurityToken st = new JwtSecurityToken("3iL", "API Test", claims, DateTime.UtcNow.AddHours(1), DateTime.Now, credentials);
         
             return new JwtSecurityTokenHandler().WriteToken(st);
         }
