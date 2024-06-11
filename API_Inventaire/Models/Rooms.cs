@@ -1,13 +1,13 @@
 ﻿namespace API_Inventaire.Models
 {
-    public class Rooms
+    public class rooms
     {
 
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsEnable { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public int ParcId { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public bool isenabled { get; set; }
+        public DateTime createdat { get; set; }
+        public DateTime updatedat { get; set; }
+        public int parcid { get; set; }
     }
 }

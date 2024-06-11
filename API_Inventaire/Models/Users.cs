@@ -1,13 +1,13 @@
 ﻿namespace API_Inventaire.Models
 {
-    public class Users
+    public class users
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
-        public bool IsEnable { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+        public int id { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string role { get; set; }
+        public bool isenabled { get; set; }
+        public DateTime createdat { get; set; }
+        public DateTime? updatedat { get; set; }
     }
 }

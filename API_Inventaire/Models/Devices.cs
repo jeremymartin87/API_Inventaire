@@ -1,16 +1,16 @@
 ﻿namespace API_Inventaire.Models
 {
-    public class Devices
+    public class devices
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string MAC { get; set; }
-        public string IP { get; set; }
-        public string OS { get; set; }
-        public bool IsEnable { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public int RoomId { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string mac { get; set; }
+        public string ip { get; set; }
+        public string os { get; set; }
+        public bool isenabled { get; set; }
+        public DateTime createdat { get; set; }
+        public DateTime updatedat { get; set; }
+        public int roomid { get; set; }
     }
 }
 

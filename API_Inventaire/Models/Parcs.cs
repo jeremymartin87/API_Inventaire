@@ -1,12 +1,12 @@
 ﻿namespace API_Inventaire.Models
 {
-    public class Parcs
+    public class parcs
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsEnable { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public int UserId { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public bool isenabled { get; set; }
+        public DateTime createdat { get; set; }
+        public DateTime? updatedat { get; set; }
+        public int userid { get; set; }
     }
 }
